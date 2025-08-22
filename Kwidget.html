@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAIUS</title>
+<style>
+  :root {
+    --grad: linear-gradient(180deg, #7e3ff2 0%, #3aa0ff 100%);
+  }
+  html, body {
+    margin: 0;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    font-family: system-ui, sans-serif;
+    background: #fff;
+  }
+  .wrap { text-align: center; }
+
+  h1 {
+    margin: 0 0 1rem 0;
+    font-size: clamp(4rem, 18vw, 18rem);
+    font-weight: 900;
+    background: var(--grad);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  p {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    font-weight: 600;
+    margin: 0;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  .fade-out { opacity: 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1 id="kaius">KAIUS</h1>
+    <p id="sentence">KAIUS is the GOAT</p>
+  </div>
+
+<script>
+  const sentences = [
+    "KAIUS is the GOAT",
+    "KAIUS is cool",
+    "KAIUS is awesome",
+    "KAIUS is legendary",
+    "KAIUS is unstoppable",
+    "KAIUS is amazing",
+    "KAIUS is epic"
+  ];
+
+  let index = 0;
+  const kaius = document.getElementById("kaius");
+  const sentence = document.getElementById("sentence");
+
+  function changeSentence() {
+    index = (index + 1) % sentences.length;
+    sentence.classList.add("fade-out");
+    setTimeout(() => {
+      sentence.textContent = sentences[index];
+      sentence.classList.remove("fade-out");
+    }, 300);
+  }
+
+  kaius.addEventListener("click", changeSentence);
+</script>
+</body>
+</html>
